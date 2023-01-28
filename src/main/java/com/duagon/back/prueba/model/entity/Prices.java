@@ -35,7 +35,7 @@ public class Prices {
     private String priority;
 
     @Column(name = "PRICE", nullable = false)
-    private Integer price;
+    private Float price;
 
     @Column(name = "CURR", nullable = false)
     private String curr;

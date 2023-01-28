@@ -15,7 +15,7 @@ public class PriceHelper {
     }
 
     public LocalDate parseDate(String date){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         return LocalDate.parse(date, formatter);
     }
 
