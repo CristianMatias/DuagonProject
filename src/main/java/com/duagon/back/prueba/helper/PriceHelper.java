@@ -24,7 +24,7 @@ public class PriceHelper {
         String brand = model.getBrandID().intValue() == 1 ? "Zara" : "Other";
 
         dto.setBrand(brand);
-        dto.setPrice(String.valueOf(model.getPrice()));
+        dto.setPrice(model.getPrice() + " " + model.getCurr());
         dto.setPriceList(model.getPriceList());
         dto.setEndDate(String.valueOf(model.getEndDate()));
         dto.setProductID(String.valueOf(model.getProductID()));
