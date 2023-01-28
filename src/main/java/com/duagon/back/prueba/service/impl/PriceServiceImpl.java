@@ -8,7 +8,7 @@ import com.duagon.back.prueba.service.PriceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
+import java.sql.Timestamp;
 import java.util.Optional;
 
 @Service
@@ -24,7 +24,7 @@ public class PriceServiceImpl implements PriceService  {
 
         Long formattedBrandID = priceHelper.parseLongID(brandID);
         Long formattedProductID = priceHelper.parseLongID(productID);
-        LocalDate formattedDate = priceHelper.parseDate(starDate);
+        Timestamp formattedDate = priceHelper.parseDate(starDate);
 
         Optional<Prices> prices = repository.findByStartDateAndProductIDAndBrandID(formattedDate, formattedProductID, formattedBrandID);
         return prices.map(value -> priceHelper.parsePriceModel2DTO(value)).orElse(null);
