@@ -13,6 +13,9 @@ public class Prices {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID", nullable = false)
+    private Long priceID;
+
     @Column(name = "BRAND_ID", nullable = false)
     private Long brandID;
 
