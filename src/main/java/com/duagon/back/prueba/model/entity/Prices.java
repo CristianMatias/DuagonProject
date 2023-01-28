@@ -1,8 +1,8 @@
 package com.duagon.back.prueba.model.entity;
 
-import jakarta.persistence.*;
 import lombok.Data;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
 
