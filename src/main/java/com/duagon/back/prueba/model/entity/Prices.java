@@ -1,4 +1,4 @@
-package com.duagon.back.prueba.model;
+package com.duagon.back.prueba.model.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
