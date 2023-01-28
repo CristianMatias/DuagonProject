@@ -13,6 +13,9 @@ public class Prices {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID", nullable = false)
+    private Long priceID;
+
     @Column(name = "BRAND_ID", nullable = false)
     private Long brandID;
 
@@ -32,7 +35,7 @@ public class Prices {
     private String priority;
 
     @Column(name = "PRICE", nullable = false)
-    private Integer price;
+    private Float price;
 
     @Column(name = "CURR", nullable = false)
     private String curr;
