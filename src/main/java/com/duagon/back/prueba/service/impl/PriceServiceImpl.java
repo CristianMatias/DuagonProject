@@ -8,9 +8,7 @@ import com.duagon.back.prueba.service.PriceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.Timestamp;
 import java.util.Optional;
 
 @Service
@@ -22,16 +20,13 @@ public class PriceServiceImpl implements PriceService  {
     private PriceHelper priceHelper;
 
     @Override
-    public List<PricesDTO> findPrices(String starDate, String productID, String brandID) {
-        List<PricesDTO> formattedPrices = new ArrayList<>();
+    public PricesDTO findPrices(String starDate, String productID, String brandID) {
 
         Long formattedBrandID = priceHelper.parseLongID(brandID);
         Long formattedProductID = priceHelper.parseLongID(productID);
-        LocalDate formattedDate = priceHelper.parseDate(starDate);
+        Timestamp formattedDate = priceHelper.parseDate(starDate);
 
-        Optional<List<Prices>> prices = repository.findByStartDateAndProductIDAndBrandID(formattedDate, formattedProductID, formattedBrandID);
-        prices.ifPresent(foundPrices -> foundPrices.forEach(price -> formattedPrices.add(priceHelper.parsePriceModel2DTO(price))));
-
-        return formattedPrices;
+        Optional<Prices> prices = repository.findByStartDateAndProductIDAndBrandID(formattedDate, formattedProductID, formattedBrandID);
+        return prices.map(value -> priceHelper.parsePriceModel2DTO(value)).orElse(null);
     }
 }

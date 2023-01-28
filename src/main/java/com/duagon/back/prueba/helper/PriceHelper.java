@@ -4,8 +4,7 @@ import com.duagon.back.prueba.model.dto.PricesDTO;
 import com.duagon.back.prueba.model.entity.Prices;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import java.sql.Timestamp;
 
 @Service
 public class PriceHelper {
@@ -14,9 +13,8 @@ public class PriceHelper {
         return Long.parseLong(id);
     }
 
-    public LocalDate parseDate(String date){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        return LocalDate.parse(date, formatter);
+    public Timestamp parseDate(String date){
+        return Timestamp.valueOf(date);
     }
 
     public PricesDTO parsePriceModel2DTO(Prices model){
@@ -24,7 +22,7 @@ public class PriceHelper {
         String brand = model.getBrandID().intValue() == 1 ? "Zara" : "Other";
 
         dto.setBrand(brand);
-        dto.setPrice(String.valueOf(model.getPrice()));
+        dto.setPrice(model.getPrice() + " " + model.getCurr());
         dto.setPriceList(model.getPriceList());
         dto.setEndDate(String.valueOf(model.getEndDate()));
         dto.setProductID(String.valueOf(model.getProductID()));

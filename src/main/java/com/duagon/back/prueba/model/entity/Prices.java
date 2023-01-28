@@ -3,7 +3,7 @@ package com.duagon.back.prueba.model.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.time.LocalDate;
+import java.sql.Timestamp;
 
 
 @Data
@@ -20,10 +20,10 @@ public class Prices {
     private Long brandID;
 
     @Column(name = "START_DATE", nullable = false)
-    private LocalDate startDate;
+    private Timestamp startDate;
 
     @Column(name = "END_DATE")
-    private LocalDate endDate;
+    private Timestamp endDate;
 
     @Column(name = "PRICE_LIST", nullable = false)
     private String priceList;

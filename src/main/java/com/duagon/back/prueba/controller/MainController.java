@@ -15,7 +15,7 @@ public class MainController {
     private PriceService priceService;
 
     @GetMapping("/search")
-    public List<PricesDTO> findPrices(@RequestParam("startDate") String startDate,
+    public PricesDTO findPrices(@RequestParam("startDate") String startDate,
                                       @RequestParam("productId") String productId,
                                       @RequestParam("brandId") String brandId){
         return priceService.findPrices(startDate, productId, brandId);

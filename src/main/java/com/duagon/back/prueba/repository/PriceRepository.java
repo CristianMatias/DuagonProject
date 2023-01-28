@@ -4,11 +4,10 @@ import com.duagon.back.prueba.model.entity.Prices;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDate;
-import java.util.List;
+import java.sql.Timestamp;
 import java.util.Optional;
 
 @Repository
 public interface PriceRepository extends JpaRepository<Prices, Long> {
-    Optional<List<Prices>> findByStartDateAndProductIDAndBrandID(LocalDate startDate, Long productID, Long brandID);
+    Optional<Prices> findByStartDateAndProductIDAndBrandID(Timestamp startDate, Long productID, Long brandID);
 }
